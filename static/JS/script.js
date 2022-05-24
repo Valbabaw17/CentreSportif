@@ -14,16 +14,33 @@ var boutons_vues = document.getElementById("boutons_vues");
 var bouton_nouveau_membre = document.getElementById("bouton_nouveau_membre");
 
 /*Vue Achats divers*/
-function achats_divers(){
+function marchandises(){
     boutons_vues.style.display = 'none';
     vue_achats_divers.style.display = 'inline';
+    document.getElementById("bouton_marchandises").style.display='inline';
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+        if(this.readyState === 4 && this.status === 200){
+            vue_achats_divers.innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET","marchandises",true);
+    xhttp.send();
+
+}
+
+/*Ajouter des marchandises*/
+function ajouter_marchandises(){
+    vue_achats_divers.style.dispay='none';
+    document.getElementById("bouton_marchandises").style.display='none';
+    document.getElementById("formulaire_marchandises").style.display='inline';
 }
 
 /*Vue Abonnements*/
 function abonnements(){
     boutons_vues.style.display = 'none';
     vue_abonnements.style.display = 'inline';
-
+    document.getElementById("bouton_abonnement").style.display='inline';
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
         if(this.readyState === 4 && this.status === 200){
@@ -33,6 +50,13 @@ function abonnements(){
     xhttp.open("GET","abonnements",true);
     xhttp.send();
 
+}
+
+/*Afficher le formulaire d'abonnement*/
+function ajouter_abonnement(){
+    vue_abonnements.style.dispay='none';
+    document.getElementById("bouton_abonnement").style.display='none';
+    document.getElementById("formulaire_abonnement").style.display='inline';
 }
 
 /*Membres*/
@@ -46,7 +70,7 @@ function membres(){
             vue_membres.innerHTML = this.responseText;
         }
     };
-    xhttp.open("GET","infos_membres",true);
+    xhttp.open("GET","membres",true);
     xhttp.send();
 }
 
@@ -57,10 +81,6 @@ function ajouter_membre(){
     document.getElementById("formulaire_inscription").style.display='inline';
 }
 
-/*Ajouter un membre dans la DB avec le formulaire*/
-function ajouter_membre_db(){
-
-}
 /************************************************
  *              PARTIE COMPTABLE                *
  *                                              *

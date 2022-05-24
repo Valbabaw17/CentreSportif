@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<marchandises>
+{% for marchandises in marchandises %}
+        <marchandise>
+            <id>{{ marchandises['id_marchandise'] }}</id>
+            <nom>{{ marchandises['nom'] }}</nom>
+            <prix>{{ marchandises['prix'] }}</prix>
+            <quantite>{{ marchandises['quantite'] }}</quantite>
+        </marchandise>
+    {% endfor %}
+</marchandises>
+

@@ -6,20 +6,76 @@
     <script src="static/JS/script.js" defer></script>
     <title>Page POS</title>
 </head>
+<!--Page POS-->
     <body>
+        <!--3 boutons pour accéder aux différentes vues  -->
         <div id="boutons_vues">
-            <button type="button" onclick="achats_divers()">Achats divers</button>
-            <button type="button" onclick="abonnements()">Abonnements</button>
-            <button type="button" onclick="membres()">Membres</button>
+            <button type="button" onclick="marchandises()">Achats divers</button>   <!--Bouton achat divers -->
+            <button type="button" onclick="abonnements()">Abonnements</button>      <!--Bouton abonnements -->
+            <button type="button" onclick="membres()">Membres</button>              <!--Bouton membres-->
         </div>
-        <div id="vue_achats_divers">
+
+        <!--Bouton pour ajouter des marchandises-->
+        <button class="class_inline" type="button" id="bouton_marchandises" onclick="ajouter_marchandises()">Acheter marchandises</button>
+        <!--Vue des achats divers-->
+        <div class="class_inline" id="vue_achats_divers"></div>
+
+        <!--Formulaire pour ajouter un abonnement à un membre -->
+        <div class="class_inline" id="formulaire_abonnement">
+            <form action= "/ajouter_marchandises" method="post">
+                <div class="champs_formulaire">
+                    <div class="saisies_formulaire">
+                        <span class="titres_formulaire">Id Membre</span>
+                        <input type="number" class="saisies_formulaire" id="id_membre" name="id_membre" required>
+                    </div>
+                    <div class="saisies_formulaire">
+                        <span class="titres_formulaire">Abonnement</span>
+                        <select class="saisies_formulaire" id="seances_choisies" name="seances_choisies">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+                    <div class="bouton_submit">
+                        <button type="submit" class="button_submit">Ajouter</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div id="vue_abonnements">
+
+        <!--Bouton pour ajouter un abonnement -->
+        <button class="class_inline" type="button" id="bouton_abonnement" onclick="ajouter_abonnement()">Ajouter abonnement</button>
+        <!--Vue des abonnements-->
+        <div class="class_inline" id="vue_abonnements"></div>
+        <!--Formulaire pour ajouter un abonnement-->
+        <div class="class_inline" id="formulaire_abonnement">
+            <form action= "/ajouter_abonnements" method="post">
+                <div class="champs_formulaires">
+                    <div class="saisies_formulaire">
+                        <span class="titres_formulaire">Id Membre</span>
+                        <input type="number" class="saisies_formulaire" id="id_membre" name="id_membre" required>
+                    </div>
+                    <div class="saisies_formulaire">
+                        <span class="titres_formulaire">Abonnement</span>
+                        <select class="saisies_formulaire" id="seances_choisies" name="seances_choisies">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+                    <div class="bouton_submit">
+                        <button type="submit" class="button_submit">Ajouter</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <button type="button" id="bouton_nouveau_membre" onclick="ajouter_membre()">Ajouter membre</button>
-        <div id="vue_membres">
-        </div>
-        <div id="formulaire_inscription">
+
+        <!--Bouton pour ajouter un membre-->
+        <button class="class_inline" type="button" id="bouton_nouveau_membre" onclick="ajouter_membre()">Ajouter membre</button>
+        <!--Vue des membres-->
+        <div  id="vue_membres"></div>
+        <!--Formulaire pour ajouter un membre-->
+        <div class="class_inline" id="formulaire_inscription">
             <form action= "/POSpage" method="post">
                 <fieldset>
                     <legend>Inscription</legend>
@@ -59,15 +115,6 @@
                 </fieldset>
             </form>
         </div>
-        <form>
-        <div class="saisies_formulaire">
-            <span class="titres_formulaire">Abonnement</span>
-            <select class="saisies_formulaire" id="seances_choisies" name="seances_choisies">
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-            </select>
-        </div>
-        </form>
+
     </body>
 </html>

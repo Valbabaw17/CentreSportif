@@ -28,17 +28,15 @@ def POSpage():
         code_postal = request.form['code_postal']
         localite = request.form['localite']
         numero_telephone = request.form['numero_telephone']
-        seances_choisies = request.form['seances_choisies']
 
         conn = get_db_connection()
         conn.execute('INSERT INTO membres VALUES (NULL,?, ?, ?, ?, ?, ?, ?,datetime(\'now\',\'localtime\'))',
                      # insertion dans la base de données
-                     (nom, prenom, rue, numero_rue, code_postal, localite, numero_telephone))
-        conn.execute('INSERT INTO abonnements VALUES (NULL,?, ?, datetime(\'now\',\'localtime\'), con.sqlite_master.ROWID, ?)',
-                     # insertion dans la base de données
-                     (seances_choisies, seances_choisies, 1))
+                     (nom, prenom, rue, numero_rue, code_postal, localite, numero_telephone));
         conn.commit()
         conn.close()
+
+
     return render_template('POSpage.html')
 
 #Page Comptable#
@@ -48,14 +46,16 @@ def comptablepage():
 
 
 #Accès à la DB en renvoyant les informations vers des fichiers xml#
-@app.route('/infos_membres', methods=('GET','POST'))
+#Liste des membres#
+@app.route('/membres', methods=('GET','POST'))
 def infos_membres():
         conn = get_db_connection()
         membres = conn.execute('SELECT * FROM membres').fetchall()
         conn.commit()
         conn.close()
-        return Response(render_template("infos_membres.xml",membres=membres), content_type="text/xml")
+        return Response(render_template("membres.xml",membres=membres), content_type="text/xml")
 
+#Liste des abonnements avec les noms+prenoms+telephone#
 @app.route('/abonnements', methods=('GET','POST'))
 def abonnements():
         conn = get_db_connection()
@@ -63,3 +63,26 @@ def abonnements():
         conn.commit()
         conn.close()
         return Response(render_template("abonnements.xml", informations=informations), content_type='text/xml')
+
+#Ajouter un abonnement
+@app.route('/ajouter_abonnements', methods=('GET','POST'))
+def ajouter_abonnements():
+    if request.method == 'POST':
+        id_membre = request.form['id_membre']
+        seances_choisies = request.form['seances_choisies']
+
+        conn = get_db_connection()
+        conn.execute('INSERT INTO abonnements VALUES (NULL,?, ?, datetime(\'now\',\'localtime\'), ?, ?)',  #insertion dans la base de données
+                         (seances_choisies, seances_choisies, id_membre,1))
+        conn.commit()
+        conn.close()
+    return redirect(url_for('POSpage'))
+
+#Liste des marchandises
+@app.route('/marchandises', methods=('GET','POST'))
+def marchandises():
+    conn = get_db_connection()
+    marchandises = conn.execute('SELECT * FROM marchandises').fetchall()
+    conn.commit()
+    conn.close()
+    return Response(render_template("marchandises.xml", marchandises=marchandises), content_type='text/xml')
