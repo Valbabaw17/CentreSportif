@@ -32,15 +32,18 @@ CREATE TABLE formules_abonnements(
     nombre_seances INTEGER NOT NULL,
     prix_formule REAL NOT NULL
 );
+
 CREATE TABLE journal(
     id_journal INTEGER PRIMARY KEY AUTOINCREMENT,
     id_formule INTEGER NOT NULL,
     id_marchandise INTEGER NOT NULL,
+    quantite_marchandise INTEGER NOT NULL,
     id_abonnement INTEGER NOT NULL,
     FOREIGN KEY (id_formule) REFERENCES formules_abonnements(id_formule),
     FOREIGN KEY (id_marchandise) REFERENCES marchandises(id_marchandise),
     FOREIGN KEY (id_abonnement) REFERENCES abonnements(id_abonnement)
 );
+
 CREATE TABLE depart_arrivees(
     id_depart_arrivee INTEGER PRIMARY KEY AUTOINCREMENT,
     heure_arrivee TEXT NOT NULL,
