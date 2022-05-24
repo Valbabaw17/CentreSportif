@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/CSS/styles.css">
+    <script src="static/JS/script.js" defer></script>
+    <title>Page POS</title>
+</head>
+    <body>
+        <div id="boutons_vues">
+            <button type="button" onclick="achats_divers()">Achats divers</button>
+            <button type="button" onclick="abonnements()">Abonnements</button>
+            <button type="button" onclick="membres()">Membres</button>
+        </div>
+        <div id="vue_achats_divers">
+        </div>
+        <div id="vue_abonnements">
+        </div>
+        <button type="button" id="bouton_nouveau_membre" onclick="ajouter_membre()">Ajouter membre</button>
+        <div id="vue_membres">
+        </div>
+        <div id="formulaire_inscription">
+            <form action= "/POSpage" method="post">
+                <fieldset>
+                    <legend>Inscription</legend>
+                <div class="champs_formulaire">
+                    <div class="saisies_formulaire">
+                        <span class="titres_formulaire">Nom</span>
+                        <input type="text" class="saisies_formulaire" id="nom" name="nom" minlength="2" maxlength="50" required>
+                    </div>
+                    <div class="saisies_formulaire">
+                        <span class="titres_formulaire">Prenom</span>
+                        <input type="text" class="saisies_formulaire" id="prenom" name="prenom" minlength="2" maxlength="50" required>
+                    </div>
+                    <div class="saisies_formulaire">
+                        <span class="titres_formulaire">Rue</span>
+                        <input type="text" class="saisies_formulaire" id="rue" name="rue" minlength="2" maxlength="50" required>
+                    </div>
+                    <div class="saisies_formulaire">
+                        <span class="titres_formulaire">Numéro de rue</span>
+                        <input type="number" class="saisies_formulaire" id="numero_rue" name="numero_rue" min="1" required>
+                    </div>
+                    <div class="saisies_formulaire">
+                        <span class="titres_formulaire">Code Postal</span>
+                        <input type="number" class="saisies_formulaire" id="code_postal" name="code_postal" placeholder="Ex : 6000" required>
+                    </div>
+                    <div class="saisies_formulaire">
+                        <span class="titres_formulaire">Localité</span>
+                        <input type="text" class="saisies_formulaire" id="localite" name="localite" placeholder="Charleroi" required>
+                    </div>
+                    <div class="saisies_formulaire">
+                        <span class="titres_formulaire">Numéro de téléphone</span>
+                        <input type="number" class="saisies_formulaire" id="numero_telephone" name="numero_telephone" placeholder="Ex : 0473211983" required>
+                    </div>
+                    <div class="bouton_submit">
+                        <button type="submit" class="button_submit">Enregistrer</button>
+                    </div>
+                </div>
+                </fieldset>
+            </form>
+        </div>
+        <form>
+        <div class="saisies_formulaire">
+            <span class="titres_formulaire">Abonnement</span>
+            <select class="saisies_formulaire" id="seances_choisies" name="seances_choisies">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+        </form>
+    </body>
+</html>

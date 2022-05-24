@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<membres>
+{% for membres in membres %}
+        <membre>
+            <id>{{ membres['id_membre'] }}</id>
+            <nom>{{ membres['nom'] }}</nom>
+            <prenom>{{ membres['prenom'] }}</prenom>
+            <nom_rue>{{ membres['nom_rue'] }}</nom_rue>
+            <num_rue>{{ membres['numero_rue'] }}</num_rue>
+            <cp>{{ membres['code_postal'] }}</cp>
+            <localite>{{ membres['localite'] }}</localite>
+            <num_tel>{{ membres['num_telephone'] }}</num_tel>
+            <date_inscription>{{ membres['date_inscription'] }}</date_inscription>
+        </membre>
+    {% endfor %}
+</membres>
+

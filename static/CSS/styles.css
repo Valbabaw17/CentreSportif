@@ -1,0 +1,7 @@
+membre,information{
+    display: flow-root list-item;
+}
+
+#vue_abonnements, #vue_achats_divers,#vue_nouveau_membre,#bouton_nouveau_membre,#formulaire_inscription{
+    display: none;
+}

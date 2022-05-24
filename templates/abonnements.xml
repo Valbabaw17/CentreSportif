@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<informations>
+{% for informations in informations %}
+        <information>
+            <id>{{ informations['id_membre'] }}</id>
+            <nom>{{ informations['nom'] }}</nom>
+            <prenom>{{ informations['prenom'] }}</prenom>
+            <num_tel>{{ informations['num_telephone'] }}</num_tel>
+            <seances_dispo>{{ informations['seances_dispo'] }}</seances_dispo>
+            <seances_totale>{{ informations['seances_totale'] }}</seances_totale>
+        </information>
+    {% endfor %}
+</informations>
+
