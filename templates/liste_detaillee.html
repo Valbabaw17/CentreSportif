@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste détaillée</title>
+</head>
+    <body>
+        {% block content %}
+            <h2>Transactions effectuées pour le : {{ jour}}</h2>
+            <table>
+                <tr>
+                    <th>Id Journal</th>
+                    <th>Nom Marchandise</th>
+                    <th>Quantité marchandises</th>
+                    <th>Jour de la transaction</th>
+                    <th>Heure de la transaction</th>
+                    <th>Totale de la transaction</th>
+                </tr>
+            {% for liste_detaillee in liste_detaillee %}
+                    {% if liste_detaillee['jour_transaction']==jour%}
+                        <tr>
+                        <td>{{ liste_detaillee['id_journal'] }}</td>
+                        <td>{{ liste_detaillee['nom'] }}</td>
+                        <td>{{ liste_detaillee['quantite_marchandise']}}</td>
+                        <td>{{ liste_detaillee['jour_transaction'] }}</td>
+                        <td>{{ liste_detaillee['heure_transaction'] }}</td>
+                        <td>{{ liste_detaillee['total_transaction']}} €</td>
+                        </tr>
+                     {% endif %}
+            {% endfor %}
+            </table>
+
+            <i>Si aucunes lignes ne s'affichent, c'est qu'il n'y a pas eu de transactions effectuées pour le jour sélectionné</i>
+        {% endblock %}
+    </body>
+</html>

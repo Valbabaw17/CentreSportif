@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Total jour/jour sur un mois</title>
+</head>
+    <body>
+    {% block content %}
+            <table>
+                <tr>
+                    <th>Jour</th>
+                    <th>Total</th>
+                    <th>Mois</th>
+                </tr>
+            {% for total_jour_jour in total_jour_jour %}
+                {% if total_jour_jour['strftime(\'%m\',jour_transaction)'] == mois_transaction %}
+                  <tr>
+                        <td>{{total_jour_jour['jour_transaction'] }}</td>
+                        <td>{{total_jour_jour['SUM(total_transaction)']}} €</td>
+                        <td>{{total_jour_jour['strftime(\'%m\',jour_transaction)']}}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </table>
+        TOTAL DU MOIS :{{ total_final_mois['SUM(total_transaction)'] }}
+    {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Total mois/mois sur une année</title>
+</head>
+    <body>
+    {% block content %}
+            <table>
+                <tr>
+                    <th>Mois</th>
+                    <th>Total</th>
+                </tr>
+            {% for total_mois_mois in total_mois_mois %}
+                {% if total_mois_mois['strftime(\'%Y\',jour_transaction)'] == annee_transaction %}
+                  <tr>
+                        <td>{{total_mois_mois['strftime(\'%m\',jour_transaction)'] }}</td>
+                        <td>{{total_mois_mois['SUM(total_transaction)']}} €</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </table>
+        TOTAL DE l'ANNEE :{{ total_final_annee['SUM(total_transaction)'] }}
+        ANNEE: {{ annee_transaction }}
+    {% endblock %}
+    </body>
+</html>

@@ -5,6 +5,7 @@
             <id>{{ membres['id_membre'] }}</id>
             <nom>{{ membres['nom'] }}</nom>
             <prenom>{{ membres['prenom'] }}</prenom>
+            <date_naissance>{{ membres['date_naissance'] }}</date_naissance>
             <nom_rue>{{ membres['nom_rue'] }}</nom_rue>
             <num_rue>{{ membres['numero_rue'] }}</num_rue>
             <cp>{{ membres['code_postal'] }}</cp>

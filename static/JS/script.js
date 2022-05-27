@@ -18,6 +18,7 @@ function marchandises(){
     boutons_vues.style.display = 'none';
     vue_achats_divers.style.display = 'inline';
     document.getElementById("bouton_marchandises").style.display='inline';
+    document.getElementById("bouton_abonnement").style.display='inline';
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
         if(this.readyState === 4 && this.status === 200){
@@ -31,16 +32,25 @@ function marchandises(){
 
 /*Ajouter des marchandises*/
 function ajouter_marchandises(){
-    vue_achats_divers.style.dispay='none';
+    document.getElementById("bouton_abonnement").style.display='none';
     document.getElementById("bouton_marchandises").style.display='none';
     document.getElementById("formulaire_marchandises").style.display='inline';
+}
+
+/*Décrémenter le nbre de séances dans l'abonnement du client*/
+function ajouter_seances(){
+    vue_abonnements.style.dispay='none';
+    document.getElementById("bouton_abonnement").style.display='none';
+    document.getElementById("bouton_seances").style.display='none';
+    document.getElementById("formulaire_seances").style.display='inline';
 }
 
 /*Vue Abonnements*/
 function abonnements(){
     boutons_vues.style.display = 'none';
     vue_abonnements.style.display = 'inline';
-    document.getElementById("bouton_abonnement").style.display='inline';
+    document.getElementById("bouton_seances").style.display='inline';
+    //document.getElementById("bouton_abonnement").style.display='inline';
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
         if(this.readyState === 4 && this.status === 200){
@@ -55,6 +65,10 @@ function abonnements(){
 /*Afficher le formulaire d'abonnement*/
 function ajouter_abonnement(){
     vue_abonnements.style.dispay='none';
+    vue_achats_divers.style.display = 'none';
+    abonnements();
+    document.getElementById("bouton_seances").style.display='none';
+    document.getElementById("bouton_marchandises").style.display='none';
     document.getElementById("bouton_abonnement").style.display='none';
     document.getElementById("formulaire_abonnement").style.display='inline';
 }
